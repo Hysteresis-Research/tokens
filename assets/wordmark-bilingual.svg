@@ -1,0 +1,38 @@
+<!--
+  Hysteresis Research · bilingual wordmark lockup
+  ----------------------------------------------
+  Mark + EN wordmark + CN 迟 滞 研 究 stacked.
+  Used on business card front, LP letter letterhead, founding documents.
+
+  EN: Newsreader 500, -0.014em tracking.
+  CN: 0.32em letter-spacing (wide tracked), color = ink-3 (tertiary).
+      Falls back through 'Noto Serif SC' → system serif (Iowan SC /
+      Songti SC / Microsoft YaHei / Noto Serif SC depending on OS).
+
+  TODO before print: outline both text elements via Inkscape
+  (Path → Object to Path) so the file is font-independent.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 100" role="img" aria-label="Hysteresis Research · 迟滞研究">
+  <title>Hysteresis Research · 迟滞研究</title>
+  <!-- Mark -->
+  <g transform="translate(0, 20)">
+    <path d="M 10 6 C 30 6, 38 7, 58 30 C 70 47, 78 53, 90 54 C 70 54, 62 53, 42 30 C 30 13, 22 7, 10 6 Z"
+          fill="none" stroke="currentColor" stroke-width="2.4"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- EN wordmark -->
+  <text x="118" y="50"
+        font-family="'Newsreader', 'Iowan Old Style', 'Charter', 'Source Serif 4', Georgia, serif"
+        font-weight="500"
+        font-size="34"
+        letter-spacing="-0.014em"
+        fill="currentColor">Hysteresis Research</text>
+  <!-- CN wordmark · tracked, tertiary ink -->
+  <text x="120" y="80"
+        font-family="'Newsreader', 'Noto Serif SC', 'Iowan Old Style', 'Songti SC', 'Microsoft YaHei', serif"
+        font-weight="400"
+        font-size="14"
+        letter-spacing="0.32em"
+        fill="currentColor"
+        opacity="0.55">迟 滞 研 究</text>
+</svg>

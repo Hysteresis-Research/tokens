@@ -1,18 +1,24 @@
 {
   "name": "@hysres/tokens",
-  "version": "0.2.0",
-  "description": "Design tokens for Hysteresis Research surfaces (Notebook variants: Bound / Engineer's graph pad / Archive card, each in light/dark).",
+  "version": "0.3.0",
+  "description": "Design tokens + brand assets for Hysteresis Research surfaces (Notebook variants: Bound / Engineer's graph pad / Archive card, each in light/dark).",
   "license": "UNLICENSED",
   "main": "tokens.css",
   "style": "tokens.css",
   "exports": {
     ".": "./tokens.css",
-    "./tokens.css": "./tokens.css"
+    "./tokens.css": "./tokens.css",
+    "./assets/*": "./assets/*",
+    "./examples/*": "./examples/*",
+    "./BRAND.md": "./BRAND.md"
   },
   "files": [
     "tokens.css",
     "README.md",
-    "LICENSE"
+    "BRAND.md",
+    "LICENSE",
+    "assets/**",
+    "examples/**"
   ],
   "repository": {
     "type": "git",

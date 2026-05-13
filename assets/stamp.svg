@@ -1,0 +1,14 @@
+<!--
+  Hysteresis Research · corner stamp variant
+  ----------------------------------------------
+  Heavier stroke (2.6) for use as a maker's stamp on the back of the
+  business card, footer of memos, signature corner of LP letter.
+  Reads at small sizes (24-40px) without losing weight.
+  Use currentColor in the parent (typically var(--ink-3) for marginalia).
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" role="img" aria-label="Hysteresis Research stamp">
+  <title>Hysteresis Research · stamp</title>
+  <path d="M 10 6 C 30 6, 38 7, 58 30 C 70 47, 78 53, 90 54 C 70 54, 62 53, 42 30 C 30 13, 22 7, 10 6 Z"
+        fill="none" stroke="currentColor" stroke-width="2.6"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

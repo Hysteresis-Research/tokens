@@ -1,13 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <style>
     /* Hysteresis B-H curve · adapts to OS theme.
-       Light fallback via stroke attribute on <path>; CSS overrides in dark.
-       Anchored to Variant A (Bound notebook) ink colours so it reads as
-       same family as the index / memo header marks. */
+       Square 100×100 viewBox so PNG exports come out square and the
+       curve has breathing room at favicon sizes.
+       Light fallback via stroke attribute on path; CSS overrides in dark.
+       Stroke 5 (heavier than master) to read at 16px favicon slot. */
     @media (prefers-color-scheme: dark) {
       path { stroke: #ece5d6; }
     }
   </style>
-  <path d="M 10 6 C 30 6, 38 7, 58 30 C 70 47, 78 53, 90 54 C 70 54, 62 53, 42 30 C 30 13, 22 7, 10 6 Z"
-        fill="none" stroke="#1a1612" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="translate(0, 20)">
+    <path d="M 10 6 C 30 6, 38 7, 58 30 C 70 47, 78 53, 90 54 C 70 54, 62 53, 42 30 C 30 13, 22 7, 10 6 Z"
+          fill="none" stroke="#1a1612" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
 </svg>

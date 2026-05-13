@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hysteresis Research · brand lockups</title>
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    padding: 56px 48px 80px;
+    transition: background 0.3s, color 0.3s;
+  }
+  body.va-dark   { background: #181410; color: #ece5d6; }
+  body.va-light  { background: #f3efe4; color: #1a1612; }
+
+  .toggle {
+    position: fixed; top: 16px; right: 16px; z-index: 50;
+    background: transparent; color: var(--ink-3);
+    border: 0.5px solid var(--rule-soft);
+    padding: 6px 12px;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .toggle:hover { color: var(--ink); border-color: var(--rule); }
+
+  .page { max-width: 880px; margin: 0 auto; }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 38px;
+    letter-spacing: -0.014em;
+    line-height: 1.05;
+    margin-bottom: 6px;
+  }
+  .kicker {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 36px;
+  }
+
+  section {
+    border-top: 0.5px solid var(--rule);
+    padding-top: 28px;
+    margin-top: 48px;
+  }
+  section .label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 20px;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  section .label .src {
+    color: var(--ink-2);
+    letter-spacing: 0.04em;
+    text-transform: none;
+    font-size: 10px;
+  }
+
+  .specimen {
+    padding: 28px 24px;
+    background: var(--paper-soft);
+    border: 0.5px solid var(--rule-soft);
+    display: flex; align-items: center; gap: 28px;
+    margin-bottom: 16px;
+  }
+  .specimen .meta {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  /* live lockups · inline SVG mark + live serif text */
+  .lockup { display: flex; align-items: center; gap: 16px; color: var(--ink); }
+  .lockup svg { display: block; flex-shrink: 0; }
+  .lockup .text-en {
+    font-family: var(--serif);
+    font-weight: 500;
+    letter-spacing: -0.014em;
+    line-height: 1;
+  }
+  .lockup .text-cn {
+    font-family: var(--serif);
+    font-weight: 400;
+    letter-spacing: 0.32em;
+    color: var(--ink-3);
+    margin-top: 6px;
+    padding-left: 2px;
+  }
+
+  /* size variants */
+  .size-s .text-en { font-size: 18px; }
+  .size-m .text-en { font-size: 28px; }
+  .size-l .text-en { font-size: 44px; }
+  .size-s .text-cn { font-size: 9px; }
+  .size-m .text-cn { font-size: 12px; }
+  .size-l .text-cn { font-size: 16px; }
+
+  /* mark-alone row */
+  .marks-row {
+    display: flex; align-items: end; gap: 36px;
+    padding: 32px 24px;
+    background: var(--paper-soft);
+    border: 0.5px solid var(--rule-soft);
+  }
+  .marks-row .one { display: flex; flex-direction: column; gap: 8px; align-items: center; color: var(--ink); }
+  .marks-row .one .cap {
+    font-family: var(--mono); font-size: 9px;
+    color: var(--ink-3); letter-spacing: 0.18em; text-transform: uppercase;
+  }
+
+  /* colour palette swatches */
+  .swatch-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; }
+  .swatch {
+    aspect-ratio: 1;
+    position: relative;
+    border: 0.5px solid var(--rule-soft);
+    margin-left: -0.5px;
+  }
+  .swatch:first-child { margin-left: 0; }
+  .swatch .hex {
+    position: absolute; bottom: 8px; left: 10px;
+    font-family: var(--mono); font-size: 9.5px;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.75);
+    mix-blend-mode: difference;
+  }
+  .swatch .role {
+    position: absolute; top: 8px; left: 10px;
+    font-family: var(--mono); font-size: 8.5px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    mix-blend-mode: difference;
+  }
+
+  footer {
+    margin-top: 64px;
+    padding-top: 20px;
+    border-top: 0.5px solid var(--rule-soft);
+    font-family: var(--mono); font-size: 10px;
+    color: var(--ink-3); letter-spacing: 0.18em;
+    text-transform: uppercase;
+    display: flex; justify-content: space-between;
+  }
+</style>
+</head>
+<body class="va-dark">
+
+<button class="toggle" id="modeToggle" aria-label="Toggle mode">— Mode</button>
+
+<div class="page">
+
+  <div class="kicker">Hysteresis Research · brand kit · lockup reference</div>
+  <h1>Brand lockups</h1>
+
+  <!-- ─── 1 · Mark variants ─── -->
+  <section>
+    <div class="label"><span>1 · Mark · stroke variants</span><span class="src">bh-mark.svg · stamp.svg · favicon.svg</span></div>
+    <div class="marks-row">
+      <div class="one">
+        <svg width="48" height="29" viewBox="0 0 100 60"><path d="M 10 6 C 30 6, 38 7, 58 30 C 70 47, 78 53, 90 54 C 70 54, 62 53, 42 30 C 30 13, 22 7, 10 6 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="cap">48 · w 2.0</span>
+      </div>
+      <div class="one">
+        <svg width="80" height="48" viewBox="0 0 100 60"><path d="M 10 6 C 30 6, 38 7, 58 30 C 70 47, 78 53, 90 54 C 70 54, 62 53, 42 30 C 30 13, 22 7, 10 6 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="cap">80 · w 2.4</span>
+      </div>
+      <div class="one">
+        <svg width="132" height="79" viewBox="0 0 100 60"><path d="M 10 6 C 30 6, 38 7, 58 30 C 70 47, 78 53, 90 54 C 70 54, 62 53, 42 30 C 30 13, 22 7, 10 6 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="cap">132 · w 3.0</span>
+      </div>
+      <div class="one" style="color: var(--ink-3);">
+        <svg width="40" height="24" viewBox="0 0 100 60"><path d="M 10 6 C 30 6, 38 7, 58 30 C 70 47, 78 53, 90 54 C 70 54, 62 53, 42 30 C 30 13, 22 7, 10 6 Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="cap">stamp · ink-3</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 2 · EN wordmark · 3 sizes ─── -->
+  <section>
+    <div class="label"><span>2 · EN wordmark lockup</span><span class="src">wordmark.svg</span></div>
+    <div class="specimen size-s">
+      <div class="lockup">
+        <svg width="32" height="19" viewBox="0 0 100 60"><path d="M 10 6 C 30 6, 38 7, 58 30 C 70 47, 78 53, 90 54 C 70 54, 62 53, 42 30 C 30 13, 22 7, 10 6 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="text-en">Hysteresis Research</span>
+      </div>
+      <div class="meta">size-s · 18px<br/>email · footer · chrome</div>
+    </div>
+    <div class="specimen size-m">
+      <div class="lockup">
+        <svg width="48" height="29" viewBox="0 0 100 60"><path d="M 10 6 C 30 6, 38 7, 58 30 C 70 47, 78 53, 90 54 C 70 54, 62 53, 42 30 C 30 13, 22 7, 10 6 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="text-en">Hysteresis Research</span>
+      </div>
+      <div class="meta">size-m · 28px<br/>memo header · LP letter</div>
+    </div>
+    <div class="specimen size-l">
+      <div class="lockup">
+        <svg width="72" height="43" viewBox="0 0 100 60"><path d="M 10 6 C 30 6, 38 7, 58 30 C 70 47, 78 53, 90 54 C 70 54, 62 53, 42 30 C 30 13, 22 7, 10 6 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="text-en">Hysteresis Research</span>
+      </div>
+      <div class="meta">size-l · 44px<br/>firm site hero · deck cover</div>
+    </div>
+  </section>
+
+  <!-- ─── 3 · Bilingual lockup ─── -->
+  <section>
+    <div class="label"><span>3 · Bilingual lockup · EN + CN</span><span class="src">wordmark-bilingual.svg</span></div>
+    <div class="specimen size-m">
+      <div class="lockup">
+        <svg width="56" height="34" viewBox="0 0 100 60"><path d="M 10 6 C 30 6, 38 7, 58 30 C 70 47, 78 53, 90 54 C 70 54, 62 53, 42 30 C 30 13, 22 7, 10 6 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div>
+          <div class="text-en">Hysteresis Research</div>
+          <div class="text-cn">迟 滞 研 究</div>
+        </div>
+      </div>
+      <div class="meta">size-m · 28 / 12px<br/>business card · LP letter · founding docs</div>
+    </div>
+    <div class="specimen size-l">
+      <div class="lockup">
+        <svg width="84" height="50" viewBox="0 0 100 60"><path d="M 10 6 C 30 6, 38 7, 58 30 C 70 47, 78 53, 90 54 C 70 54, 62 53, 42 30 C 30 13, 22 7, 10 6 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div>
+          <div class="text-en">Hysteresis Research</div>
+          <div class="text-cn">迟 滞 研 究</div>
+        </div>
+      </div>
+      <div class="meta">size-l · 44 / 16px<br/>letterhead · cover slide</div>
+    </div>
+  </section>
+
+  <!-- ─── 4 · Variant A palette · live tokens ─── -->
+  <section>
+    <div class="label"><span>4 · Variant A · Bound notebook · palette</span><span class="src">tokens.css → .va-dark / .va-light</span></div>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#181410"><span class="role">paper</span><span class="hex">#181410</span></div>
+      <div class="swatch" style="background:#1f1a14"><span class="role">soft</span><span class="hex">#1f1a14</span></div>
+      <div class="swatch" style="background:#ece5d6"><span class="role">ink</span><span class="hex">#ece5d6</span></div>
+      <div class="swatch" style="background:#aa9f8a"><span class="role">ink-2</span><span class="hex">#aa9f8a</span></div>
+      <div class="swatch" style="background:#d97c5e"><span class="role">accent</span><span class="hex">#d97c5e</span></div>
+      <div class="swatch" style="background:#a99238"><span class="role">hilite</span><span class="hex">#a99238</span></div>
+    </div>
+    <div class="swatch-row" style="margin-top: 4px;">
+      <div class="swatch" style="background:#f3efe4"><span class="role" style="color:rgba(0,0,0,0.6)">paper</span><span class="hex" style="color:rgba(0,0,0,0.6)">#f3efe4</span></div>
+      <div class="swatch" style="background:#ede8d8"><span class="role" style="color:rgba(0,0,0,0.6)">soft</span><span class="hex" style="color:rgba(0,0,0,0.6)">#ede8d8</span></div>
+      <div class="swatch" style="background:#1a1612"><span class="role">ink</span><span class="hex">#1a1612</span></div>
+      <div class="swatch" style="background:#4a4239"><span class="role">ink-2</span><span class="hex">#4a4239</span></div>
+      <div class="swatch" style="background:#6e2c1f"><span class="role">accent</span><span class="hex">#6e2c1f</span></div>
+      <div class="swatch" style="background:#d9c66b"><span class="role" style="color:rgba(0,0,0,0.6)">hilite</span><span class="hex" style="color:rgba(0,0,0,0.6)">#d9c66b</span></div>
+    </div>
+  </section>
+
+  <!-- ─── 5 · Variant B palette ─── -->
+  <section>
+    <div class="label"><span>5 · Variant B · Engineer's pad · palette</span><span class="src">tokens.css → .vb-dark / .vb-light</span></div>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#0a0c10"><span class="role">paper</span><span class="hex">#0a0c10</span></div>
+      <div class="swatch" style="background:#10131a"><span class="role">soft</span><span class="hex">#10131a</span></div>
+      <div class="swatch" style="background:#dde3ea"><span class="role">ink</span><span class="hex">#dde3ea</span></div>
+      <div class="swatch" style="background:#8d96a3"><span class="role">ink-2</span><span class="hex">#8d96a3</span></div>
+      <div class="swatch" style="background:#7ec5ff"><span class="role">accent</span><span class="hex">#7ec5ff</span></div>
+      <div class="swatch" style="background:#ff7d68"><span class="role">hilite</span><span class="hex">#ff7d68</span></div>
+    </div>
+    <div class="swatch-row" style="margin-top: 4px;">
+      <div class="swatch" style="background:#eeece4"><span class="role" style="color:rgba(0,0,0,0.6)">paper</span><span class="hex" style="color:rgba(0,0,0,0.6)">#eeece4</span></div>
+      <div class="swatch" style="background:#e6e4dc"><span class="role" style="color:rgba(0,0,0,0.6)">soft</span><span class="hex" style="color:rgba(0,0,0,0.6)">#e6e4dc</span></div>
+      <div class="swatch" style="background:#15171c"><span class="role">ink</span><span class="hex">#15171c</span></div>
+      <div class="swatch" style="background:#3e424a"><span class="role">ink-2</span><span class="hex">#3e424a</span></div>
+      <div class="swatch" style="background:#1b5fa6"><span class="role">accent</span><span class="hex">#1b5fa6</span></div>
+      <div class="swatch" style="background:#c43d2f"><span class="role">hilite</span><span class="hex">#c43d2f</span></div>
+    </div>
+  </section>
+
+  <!-- ─── 6 · Variant C palette ─── -->
+  <section>
+    <div class="label"><span>6 · Variant C · Archive card · palette</span><span class="src">tokens.css → .vc-dark / .vc-light</span></div>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#14130f"><span class="role">substrate</span><span class="hex">#14130f</span></div>
+      <div class="swatch" style="background:#1c1a14"><span class="role">paper</span><span class="hex">#1c1a14</span></div>
+      <div class="swatch" style="background:#e6dfca"><span class="role">ink</span><span class="hex">#e6dfca</span></div>
+      <div class="swatch" style="background:#a89e83"><span class="role">ink-2</span><span class="hex">#a89e83</span></div>
+      <div class="swatch" style="background:#d97c4a"><span class="role">accent</span><span class="hex">#d97c4a</span></div>
+      <div class="swatch" style="background:#cbb13e"><span class="role">hilite</span><span class="hex">#cbb13e</span></div>
+    </div>
+    <div class="swatch-row" style="margin-top: 4px;">
+      <div class="swatch" style="background:#d4cdb8"><span class="role" style="color:rgba(0,0,0,0.6)">substrate</span><span class="hex" style="color:rgba(0,0,0,0.6)">#d4cdb8</span></div>
+      <div class="swatch" style="background:#f6f1e3"><span class="role" style="color:rgba(0,0,0,0.6)">paper</span><span class="hex" style="color:rgba(0,0,0,0.6)">#f6f1e3</span></div>
+      <div class="swatch" style="background:#2a261d"><span class="role">ink</span><span class="hex">#2a261d</span></div>
+      <div class="swatch" style="background:#5a5246"><span class="role">ink-2</span><span class="hex">#5a5246</span></div>
+      <div class="swatch" style="background:#883a23"><span class="role">accent</span><span class="hex">#883a23</span></div>
+      <div class="swatch" style="background:#c6a23b"><span class="role">hilite</span><span class="hex">#c6a23b</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Hysteresis Research · brand kit · v1.0</span>
+    <span><a href="../BRAND.md" style="color: inherit; text-decoration: none;">BRAND.md</a></span>
+  </footer>
+</div>
+
+<script>
+  // toggle through 6 modes: va-dark → va-light → vb-dark → vb-light → vc-dark → vc-light → va-dark
+  const ORDER = ['va-dark','va-light','vb-dark','vb-light','vc-dark','vc-light'];
+  const KEY = 'hr-mode-brand';
+  const initial = localStorage.getItem(KEY) || 'va-dark';
+  document.body.className = initial;
+  document.getElementById('modeToggle').addEventListener('click', () => {
+    const cur = document.body.className;
+    const idx = ORDER.indexOf(cur);
+    const next = ORDER[(idx + 1) % ORDER.length];
+    document.body.className = next;
+    localStorage.setItem(KEY, next);
+  });
+</script>
+</body>
+</html>

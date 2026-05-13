@@ -76,8 +76,31 @@ See [`examples/`](./examples/) for self-contained HTML files demonstrating each 
 - [`examples/variant-b.html`](./examples/variant-b.html) — Engineer's graph pad (blueprint blue + grid background)
 - [`examples/variant-c.html`](./examples/variant-c.html) — Archive card (substrate-mounted + ochre)
 - [`examples/index.html`](./examples/index.html) — gallery linking all three
+- [`examples/lockup.html`](./examples/lockup.html) — cross-variant lockup specimen + palette swatches (cycles through all 6 modes)
 
 Each file is standalone (loads `../tokens.css` and inlines layout CSS) — open directly in a browser, or use as a starting template. To flip a variant from dark to light, swap the body class suffix (`va-dark` → `va-light`, etc).
+
+## Brand assets
+
+Since `v0.3.0`, this package also ships brand assets under [`assets/`](./assets/):
+
+| File | Use |
+|---|---|
+| [`assets/bh-mark.svg`](./assets/bh-mark.svg) | master B-H curve mark · `currentColor` · scales 1.4–3.0 |
+| [`assets/stamp.svg`](./assets/stamp.svg) | corner-stamp variant · stroke 2.6 |
+| [`assets/favicon.svg`](./assets/favicon.svg) | auto-theme favicon · square 100×100 · `prefers-color-scheme` |
+| [`assets/wordmark.svg`](./assets/wordmark.svg) | mark + EN wordmark · horizontal lockup |
+| [`assets/wordmark-bilingual.svg`](./assets/wordmark-bilingual.svg) | mark + EN + CN 迟 滞 研 究 lockup |
+
+Import from a Next.js / Vite / webpack-style bundler:
+
+```ts
+import bhMark from '@hysres/tokens/assets/bh-mark.svg';
+```
+
+Or copy into your `public/` directory for `<link rel="icon">` and other browser-known paths.
+
+See [BRAND.md](./BRAND.md) for voice rules, type / color tokens, CMYK approximations, mark size scale, and the variant-to-surface map. BRAND.md is the normative brand reference; everything else in this package implements it.
 
 ## Versioning
 

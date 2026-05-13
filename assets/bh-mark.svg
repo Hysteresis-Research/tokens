@@ -1,0 +1,19 @@
+<!--
+  Hysteresis Research · B-H mark · master SVG
+  ----------------------------------------------
+  · Single open path, no fill.
+  · stroke="currentColor" — recolour by setting the parent element's color.
+  · Default stroke-width 2.4 (at viewBox 100x60). Scale-equivalent at:
+      28px height  → 1.4 stroke
+      48px height  → 2.0 stroke
+      80px height  → 2.4 stroke (default)
+     132px height  → 3.0 stroke
+  · Embodies the firm's edge thesis: as the field cycles, magnetisation
+    lags — the enclosed area is the energy lost per cycle.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" role="img" aria-label="Hysteresis Research mark">
+  <title>Hysteresis Research</title>
+  <path d="M 10 6 C 30 6, 38 7, 58 30 C 70 47, 78 53, 90 54 C 70 54, 62 53, 42 30 C 30 13, 22 7, 10 6 Z"
+        fill="none" stroke="currentColor" stroke-width="2.4"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
