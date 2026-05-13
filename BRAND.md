@@ -273,8 +273,8 @@ Inline mark — drop anywhere, recolour via parent:
 
 ```html
 <svg width="48" height="29" viewBox="0 0 100 60" aria-hidden="true">
-  <path d="M 10 6 C 30 6, 38 7, 58 30 C 70 47, 78 53, 90 54
-           C 70 54, 62 53, 42 30 C 30 13, 22 7, 10 6 Z"
+  <path d="M 10 54 C 30 54, 38 53, 58 30 C 70 13, 78 7, 90 6
+           C 70 6, 62 7, 42 30 C 30 47, 22 53, 10 54 Z"
         fill="none" stroke="currentColor" stroke-width="2.4"
         stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

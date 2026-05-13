@@ -1,6 +1,6 @@
 {
   "name": "@hysres/tokens",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Design tokens + brand assets for Hysteresis Research surfaces (Notebook variants: Bound / Engineer's graph pad / Archive card, each in light/dark).",
   "license": "UNLICENSED",
   "main": "tokens.css",
