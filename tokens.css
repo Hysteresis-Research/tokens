@@ -1,0 +1,129 @@
+/*
+ * @hysres/tokens · v0.1.0
+ * Design tokens for Hysteresis Research surfaces.
+ *
+ * Canonical source. Do not copy this file into other repos — install
+ * the npm package and import:
+ *
+ *   import '@hysres/tokens/tokens.css';
+ *
+ * Notebook system: 3 variants × 2 modes.
+ *   .va-light / .va-dark  ·  Bound notebook       (cocoa paper + oxblood)
+ *   .vb-light / .vb-dark  ·  Engineer's graph pad (blueprint blue + grid)
+ *   .vc-light / .vc-dark  ·  Archive card         (substrate + ochre)
+ *
+ * Apply by adding the variant class to <body> or a stage container.
+ * Shared skeleton: Newsreader serif + Noto Serif SC CJK fallback,
+ * JetBrains Mono labels, 8-pt grid, B-H curve brand mark.
+ */
+
+/* v2 design tokens · three Notebook variants · per-variant palettes.
+   The three variants are colour-distinct again: each owns its own
+   substrate and accent family. Skeleton is shared (Newsreader,
+   JetBrains Mono, B-H mark, 8-pt grid). */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Noto+Serif+SC:wght@400;500;600&display=swap');
+
+/* Restrict Noto Serif SC to CJK ranges so it doesn't shadow Newsreader
+   on Latin text. Newsreader has no CN glyphs, so this is the canonical
+   CJK fallback for the wordmark + bilingual lockup. */
+@font-face {
+  font-family: 'Newsreader CJK';
+  src: local('Noto Serif SC Medium'), local('NotoSerifSC-Medium');
+  unicode-range: U+4E00-9FFF, U+3000-303F, U+FF00-FFEF, U+2E80-2EFF, U+3400-4DBF;
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Newsreader CJK';
+  src: local('Noto Serif SC Regular'), local('NotoSerifSC-Regular');
+  unicode-range: U+4E00-9FFF, U+3000-303F, U+FF00-FFEF, U+2E80-2EFF, U+3400-4DBF;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --serif: 'Newsreader', 'Newsreader CJK', 'Iowan Old Style', 'Charter', 'Source Serif 4', 'Noto Serif SC', Georgia, serif;
+  --serif-tight: 'Source Serif 4', 'Newsreader CJK', 'Iowan Old Style', 'Noto Serif SC', Georgia, serif;
+  --mono: 'JetBrains Mono', 'SF Mono', ui-monospace, Menlo, monospace;
+  --grid-base: 8px;
+}
+
+/* ─── Variant A · Bound notebook ───────────────────────────────────
+   Cocoa / cream paper · bone or sepia ink · Claude sunset accent. */
+.va-light {
+  --paper:       #f3efe4;
+  --paper-soft:  #ede8d8;
+  --ink:         #1a1612;
+  --ink-2:       #4a4239;
+  --ink-3:       #8a8278;
+  --rule:        rgba(26,22,18,0.18);
+  --rule-soft:   rgba(26,22,18,0.10);
+  --accent:      #6e2c1f;    /* oxblood */
+  --hilite:      #d9c66b;
+}
+.va-dark {
+  --paper:       #181410;
+  --paper-soft:  #1f1a14;
+  --ink:         #ece5d6;
+  --ink-2:       #aa9f8a;
+  --ink-3:       #65594a;
+  --rule:        rgba(236,229,214,0.16);
+  --rule-soft:   rgba(236,229,214,0.08);
+  --accent:      #d97c5e;    /* sunset oxblood */
+  --hilite:      #a99238;
+}
+
+/* ─── Variant B · Engineer's graph pad ───────────────────────────── */
+.vb-light {
+  --paper:       #eeece4;
+  --paper-soft:  #e6e4dc;
+  --grid:        rgba(20,40,60,0.07);
+  --grid-2:      rgba(20,40,60,0.14);
+  --ink:         #15171c;
+  --ink-2:       #3e424a;
+  --ink-3:       #8b8f95;
+  --rule:        rgba(21,23,28,0.20);
+  --rule-soft:   rgba(21,23,28,0.10);
+  --accent:      #1b5fa6;    /* blueprint blue */
+  --hilite:      #c43d2f;
+}
+.vb-dark {
+  --paper:       #0a0c10;
+  --paper-soft:  #10131a;
+  --grid:        rgba(120,180,220,0.05);
+  --grid-2:      rgba(120,180,220,0.12);
+  --ink:         #dde3ea;
+  --ink-2:       #8d96a3;
+  --ink-3:       #4a525d;
+  --rule:        rgba(221,227,234,0.18);
+  --rule-soft:   rgba(221,227,234,0.08);
+  --accent:      #7ec5ff;    /* cyan blueprint */
+  --hilite:      #ff7d68;
+}
+
+/* ─── Variant C · Archive card ───────────────────────────────────── */
+.vc-light {
+  --substrate:   #d4cdb8;
+  --paper:       #f6f1e3;
+  --paper-soft:  #efe9d8;
+  --ink:         #2a261d;
+  --ink-2:       #5a5246;
+  --ink-3:       #8d8576;
+  --rule:        rgba(42,38,29,0.65);
+  --rule-soft:   rgba(42,38,29,0.20);
+  --accent:      #883a23;    /* deep oxblood */
+  --hilite:      #c6a23b;
+}
+.vc-dark {
+  --substrate:   #14130f;
+  --paper:       #1c1a14;
+  --paper-soft:  #16140f;
+  --ink:         #e6dfca;
+  --ink-2:       #a89e83;
+  --ink-3:       #6a6354;
+  --rule:        rgba(230,223,202,0.40);
+  --rule-soft:   rgba(230,223,202,0.15);
+  --accent:      #d97c4a;    /* warm terracotta */
+  --hilite:      #cbb13e;
+}
