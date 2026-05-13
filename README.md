@@ -68,6 +68,17 @@ Apply a variant class to `<body>` (or any container):
 Variant B additionally exposes `--grid` / `--grid-2` for the graph-paper background.
 Variant C additionally exposes `--substrate` for the mounting card.
 
+## Examples
+
+See [`examples/`](./examples/) for self-contained HTML files demonstrating each variant:
+
+- [`examples/variant-a.html`](./examples/variant-a.html) — Bound notebook (cocoa + oxblood; the default used by hysres/web)
+- [`examples/variant-b.html`](./examples/variant-b.html) — Engineer's graph pad (blueprint blue + grid background)
+- [`examples/variant-c.html`](./examples/variant-c.html) — Archive card (substrate-mounted + ochre)
+- [`examples/index.html`](./examples/index.html) — gallery linking all three
+
+Each file is standalone (loads `../tokens.css` and inlines layout CSS) — open directly in a browser, or use as a starting template. To flip a variant from dark to light, swap the body class suffix (`va-dark` → `va-light`, etc).
+
 ## Versioning
 
 Semver. Releases tagged `vX.Y.Z` are published to GitHub Packages via CI (`.github/workflows/publish.yml`).

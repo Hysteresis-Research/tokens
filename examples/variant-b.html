@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Variant B · Engineer's graph pad · @hysres/tokens</title>
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(to right, var(--grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid) 1px, transparent 1px),
+      linear-gradient(to right, var(--grid-2) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-2) 1px, transparent 1px);
+    background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+  }
+  .rail {
+    padding: 1.5rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: var(--mono);
+    font-size: 0.66rem; letter-spacing: 0.20em;
+    color: var(--ink-3); text-transform: uppercase;
+    background: var(--paper-soft);
+  }
+  header.rail { border-bottom: 0.5px solid var(--rule); }
+  footer.rail { border-top: 0.5px solid var(--rule); margin-top: auto; }
+  .brand-mark { color: var(--ink); letter-spacing: 0.22em; display: inline-flex; align-items: center; gap: 0.7em; }
+  main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 4rem 2.5rem; }
+  .col { width: 100%; max-width: 640px; display: grid; grid-template-columns: 56px 1fr; gap: 0 24px; align-items: start; }
+  .marginalia {
+    font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.10em;
+    color: var(--ink-3); padding-top: 12px; text-align: right; padding-right: 8px;
+    border-right: 0.5px solid var(--rule-soft); min-height: 50px; align-self: stretch;
+  }
+  .hero-mark { grid-column: 2; color: var(--ink); margin-bottom: 2.25rem; }
+  h1 {
+    grid-column: 2; font-family: var(--serif); font-weight: 500;
+    font-size: clamp(2.4rem, 5.6vw, 4rem); line-height: 1.02; letter-spacing: -0.014em;
+    margin-bottom: 0.3rem; color: var(--ink);
+  }
+  .lede {
+    grid-column: 2; font-family: var(--mono); font-size: 1rem; line-height: 1.45;
+    color: var(--ink-2); margin-bottom: 2.75rem; max-width: 40ch;
+    letter-spacing: 0.05em;
+  }
+  .body {
+    grid-column: 2; font-family: var(--serif);
+    font-size: clamp(1.05rem, 1.6vw, 1.15rem); line-height: 1.62;
+    color: var(--ink); max-width: 42ch; margin-bottom: 1.75rem; text-wrap: pretty;
+  }
+  .signal { color: var(--ink); border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
+  .hi { background: var(--hilite); color: var(--ink); padding: 0 0.15em; }
+  .readout { grid-column: 2; font-family: var(--mono); font-size: 12px; line-height: 1.8; color: var(--ink-2); margin-bottom: 1rem; }
+  .readout .k { color: var(--ink-3); display: inline-block; min-width: 8ch; }
+  .readout .v { color: var(--ink); }
+  .swatches { grid-column: 2; display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; margin-top: 1rem; }
+  .swatch { display: flex; flex-direction: column; gap: 4px; }
+  .swatch .chip { height: 48px; border: 0.5px solid var(--rule-soft); }
+  .swatch .label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; color: var(--ink-3); text-transform: uppercase; }
+</style>
+</head>
+<body class="vb-dark">
+<header class="rail">
+  <span class="brand-mark">
+    <svg width="22" height="14" viewBox="0 0 100 60" aria-hidden="true">
+      <path d="M 10 6 C 30 6, 38 7, 58 30 C 70 47, 78 53, 90 54 C 70 54, 62 53, 42 30 C 30 13, 22 7, 10 6 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    @hysres/tokens · Variant B
+  </span>
+  <span>Engineer's graph pad · Dark</span>
+</header>
+
+<main>
+  <div class="col">
+    <div class="marginalia">§1</div>
+    <div class="hero-mark">
+      <svg width="180" height="108" viewBox="0 0 100 60">
+        <path d="M 10 6 C 30 6, 38 7, 58 30 C 70 47, 78 53, 90 54 C 70 54, 62 53, 42 30 C 30 13, 22 7, 10 6 Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <div class="marginalia">spec</div>
+    <h1>Variant B</h1>
+    <div></div>
+    <p class="lede">graph paper · blueprint blue · red caution.</p>
+
+    <div class="marginalia">§2</div>
+    <p class="body">
+      A technical surface — a quadrille graph pad held under a draughting lamp. Where Variant A is contemplative, this is for <span class="signal">measurement displays</span> and <span class="hi">cautionary highlights</span>. The grid background is rendered from <code>--grid</code> and <code>--grid-2</code>.
+    </p>
+
+    <div class="marginalia">§3</div>
+    <div class="readout">
+      <div><span class="k">spot</span> <span class="v">$81,026.50</span></div>
+      <div><span class="k">24h</span> <span class="v">−0.08%</span></div>
+      <div><span class="k">funding</span> <span class="v">+0.0059% / 8h</span></div>
+      <div><span class="k">basis</span> <span class="v">+1.2% ann.</span></div>
+    </div>
+
+    <div class="marginalia">§4</div>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background: var(--paper)"></div><div class="label">paper</div></div>
+      <div class="swatch"><div class="chip" style="background: var(--paper-soft)"></div><div class="label">paper-soft</div></div>
+      <div class="swatch"><div class="chip" style="background: var(--ink)"></div><div class="label">ink</div></div>
+      <div class="swatch"><div class="chip" style="background: var(--ink-2)"></div><div class="label">ink-2</div></div>
+      <div class="swatch"><div class="chip" style="background: var(--accent)"></div><div class="label">accent</div></div>
+      <div class="swatch"><div class="chip" style="background: var(--hilite)"></div><div class="label">hilite</div></div>
+    </div>
+  </div>
+</main>
+
+<footer class="rail">
+  <span>class="vb-dark" · swap to "vb-light" for blueprint paper variant</span>
+  <span><a href="./" style="color: var(--ink-3); text-decoration: none;">← index</a></span>
+</footer>
+</body>
+</html>
