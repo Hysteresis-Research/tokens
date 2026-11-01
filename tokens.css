@@ -1,11 +1,11 @@
 /*
- * @hysres/tokens · v0.1.0
+ * @mechofgalaxy/tokens · v0.1.0
  * Design tokens for Hysteresis Research surfaces.
  *
  * Canonical source. Do not copy this file into other repos — install
  * the npm package and import:
  *
- *   import '@hysres/tokens/tokens.css';
+ *   import '@mechofgalaxy/tokens/tokens.css';
  *
  * Notebook system: 3 variants × 2 modes.
  *   .va-light / .va-dark  ·  Bound notebook       (cocoa paper + oxblood)

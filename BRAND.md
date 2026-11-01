@@ -1,11 +1,11 @@
 # Hysteresis Research · brand book
 
-Normative brand reference shipped with [`@hysres/tokens`](README.md).
+Normative brand reference shipped with [`@mechofgalaxy/tokens`](README.md).
 Voice rules derive from the firm's founding document and blurb,
 held in the internal firm-operations repo.
 
 ```
-@hysres/tokens/
+@mechofgalaxy/tokens/
 ├── README.md                   npm install / usage
 ├── BRAND.md                    this file · brand book
 ├── tokens.css                  design tokens · 3 variants × 2 modes

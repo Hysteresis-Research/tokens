@@ -1,5 +1,5 @@
 {
-  "name": "@hysres/tokens",
+  "name": "@mechofgalaxy/tokens",
   "version": "0.4.0",
   "description": "Design tokens + brand assets for Hysteresis Research surfaces (Notebook variants: Bound / Engineer's graph pad / Archive card, each in light/dark).",
   "license": "UNLICENSED",
@@ -22,11 +22,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hysres/tokens.git"
+    "url": "git+https://github.com/Hysteresis-Research/tokens.git"
   },
-  "homepage": "https://github.com/hysres/tokens",
+  "homepage": "https://github.com/Hysteresis-Research/tokens",
   "bugs": {
-    "url": "https://github.com/hysres/tokens/issues"
+    "url": "https://github.com/Hysteresis-Research/tokens/issues"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",

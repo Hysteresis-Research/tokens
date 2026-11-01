@@ -1,10 +1,12 @@
-# @hysres/tokens
+# @mechofgalaxy/tokens
 
-Design tokens for [Hysteresis Research](https://github.com/hysres) surfaces.
+Design tokens for [Hysteresis Research](https://github.com/Hysteresis-Research) surfaces.
 
 A single CSS file shipping three Notebook variants (Bound / Engineer's graph pad / Archive card), each in light and dark mode, on a shared serif + 8-pt skeleton.
 
 ## Install
+
+The registry package is [`@mechofgalaxy/tokens`](https://github.com/users/mechofgalaxy/packages/npm/package/tokens); its linked source repository is [`Hysteresis-Research/tokens`](https://github.com/Hysteresis-Research/tokens). The package namespace follows the personal account, while the repository remains in the organization.
 
 This package is hosted on **GitHub Packages**. Even for public packages, GitHub Packages requires authentication to install.
 
@@ -17,7 +19,7 @@ Generate a [classic PAT](https://github.com/settings/tokens/new) with the `read:
 In your project root (or `~/.npmrc` for all projects):
 
 ```
-@hysres:registry=https://npm.pkg.github.com
+@mechofgalaxy:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${NPM_TOKEN}
 ```
 
@@ -26,7 +28,7 @@ Then set `NPM_TOKEN` in your shell env (do **not** inline the PAT into `.npmrc` 
 ### 3. Install
 
 ```bash
-npm install @hysres/tokens
+npm install @mechofgalaxy/tokens
 ```
 
 ## Usage
@@ -34,7 +36,7 @@ npm install @hysres/tokens
 Import the CSS once in your app entry:
 
 ```js
-import '@hysres/tokens/tokens.css';
+import '@mechofgalaxy/tokens/tokens.css';
 ```
 
 Apply a variant class to `<body>` (or any container):
@@ -72,7 +74,7 @@ Variant C additionally exposes `--substrate` for the mounting card.
 
 See [`examples/`](./examples/) for self-contained HTML files demonstrating each variant:
 
-- [`examples/variant-a.html`](./examples/variant-a.html) — Bound notebook (cocoa + oxblood; the default used by hysres/web)
+- [`examples/variant-a.html`](./examples/variant-a.html) — Bound notebook (cocoa + oxblood; the default used by Hysteresis Research web surfaces)
 - [`examples/variant-b.html`](./examples/variant-b.html) — Engineer's graph pad (blueprint blue + grid background)
 - [`examples/variant-c.html`](./examples/variant-c.html) — Archive card (substrate-mounted + ochre)
 - [`examples/index.html`](./examples/index.html) — gallery linking all three
@@ -95,7 +97,7 @@ Since `v0.3.0`, this package also ships brand assets under [`assets/`](./assets/
 Import from a Next.js / Vite / webpack-style bundler:
 
 ```ts
-import bhMark from '@hysres/tokens/assets/bh-mark.svg';
+import bhMark from '@mechofgalaxy/tokens/assets/bh-mark.svg';
 ```
 
 Or copy into your `public/` directory for `<link rel="icon">` and other browser-known paths.
